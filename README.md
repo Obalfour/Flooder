@@ -1,6 +1,8 @@
 # Flooder
 A puzzle game that works in original Nintendo Game Boy Color hardware.
 
+<img src="./flooder.jpg" width="600">
+
 ## Quick start
 
 First, you need to install [GBDK 2020](https://github.com/gbdk-2020/gbdk-2020/releases).
