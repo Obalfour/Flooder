@@ -1,7 +1,9 @@
 # Flooder
 A puzzle game that works in original Nintendo Game Boy Color hardware.
 
-<img src="./flooder.jpg" width="600">
+The physical release is out now, [order here](https://www.ferrantecrafts.com/listing/1173804126/flooder-game-cartridge-for-game-boy).
+
+<img src="./flooder.png" width="600">
 
 ## Quick start
 
