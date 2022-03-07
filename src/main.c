@@ -207,69 +207,63 @@ void main(void)
 						break;
 				}	
 			}
-
-			if(joypad() == J_A || joypad() == J_B) 
-			{
-				if(prev_color != color_state) 
+		}
+		if(joypad() == J_A || joypad() == J_B) 
+		{
+			if(prev_color != color_state) 
 				{
-					pewSound();
-					floodFill(0, 0, color_state, prev_color, board);
-					colorizeBoard(board);
-					prev_color = color_state;
-					if(checkWinner(prev_color, board) != 0)
-					{
-						VBK_REG = 1;
-						set_win_tiles(0,0,20,18,WINNER_MAP_ATTR); 
+				pewSound();
+				floodFill(0, 0, color_state, prev_color, board);
+				colorizeBoard(board);
+				prev_color = color_state;
+				if(checkWinner(prev_color, board) != 0)
+				{
+					VBK_REG = 1;
+					set_win_tiles(0,0,20,18,WINNER_MAP_ATTR); 
+					VBK_REG = 0; 
+					set_win_tiles(0,0,20,18,WINNER_MAP);
+					HIDE_SPRITES;
+					SHOW_WIN;
 
-						VBK_REG = 0; 
-						set_win_tiles(0,0,20,18,WINNER_MAP);
-
-						HIDE_SPRITES;
-						SHOW_WIN;
-
-						waitpad(J_START);
+					waitpad(J_START);
 						
-						HIDE_WIN;
-						SHOW_SPRITES;	
-						moves = 26;
-						setMoves(moves);
-						generateRandomBoard(board);
-						prev_color = board[0][0];
-						VBK_REG = 1;
-						set_bkg_tiles(5, 3, 14, 14, board[0]);
-						set_bkg_tiles(1, 4, 1, 1, board[0]); 
-						set_bkg_tiles(2, 4, 1, 1, board[0]);
-					}
-					moves--;
-					setMoves(moves); 
-					if(moves == 0)
-					{
-						VBK_REG = 1;
-						set_win_tiles(0,0,20,18,LOSER_MAP_ATTR); 
-
-						VBK_REG = 0; 
-						set_win_tiles(0,0,20,18,LOSER_MAP);
-
-						HIDE_SPRITES;
-						SHOW_WIN;
-
-						waitpad(J_START);
-						
-						HIDE_WIN;
-						SHOW_SPRITES;	
-						moves = 25;
-						setMoves(moves);
-						generateRandomBoard(board);
-						prev_color = board[0][0];
-						VBK_REG = 1;
-						set_bkg_tiles(5, 3, 14, 14, board[0]);
-						set_bkg_tiles(1, 4, 1, 1, board[0]); 
-						set_bkg_tiles(2, 4, 1, 1, board[0]);
-					}
+					HIDE_WIN;
+					SHOW_SPRITES;	
+					moves = 26;
+					setMoves(moves);
+					generateRandomBoard(board);
+					prev_color = board[0][0];
+					VBK_REG = 1;
+					set_bkg_tiles(5, 3, 14, 14, board[0]);
+					set_bkg_tiles(1, 4, 1, 1, board[0]); 
+					set_bkg_tiles(2, 4, 1, 1, board[0]);
+				}
+				moves--;
+				setMoves(moves); 
+				if(moves == 0)
+				{
+					VBK_REG = 1;
+					set_win_tiles(0,0,20,18,LOSER_MAP_ATTR); 
+					VBK_REG = 0; 
+					set_win_tiles(0,0,20,18,LOSER_MAP);
+					HIDE_SPRITES;
+					SHOW_WIN;
+					waitpad(J_START);
+					
+					HIDE_WIN;
+					SHOW_SPRITES;	
+					moves = 25;
+					setMoves(moves);
+					generateRandomBoard(board);
+					prev_color = board[0][0];
+					VBK_REG = 1;
+					set_bkg_tiles(5, 3, 14, 14, board[0]);
+					set_bkg_tiles(1, 4, 1, 1, board[0]); 
+					set_bkg_tiles(2, 4, 1, 1, board[0]);
 				}
 			}
 		}
-		delay(16);
+	delay(16);
 	}
 }
 
