@@ -11,6 +11,8 @@ void main(void)
     enum colorsMenu prev_color;
 	UINT8 board[14][14];
 	UINT8 moves = 25;
+	UINT8 timer = 0;
+	UINT8 repeat_delay = 30;
 
 
 	NR50_REG = 0xFF;
@@ -102,157 +104,173 @@ void main(void)
 
     while(1) 
     {
-    	if(joypad() == J_UP || joypad() == J_LEFT) 
-    	{
-    		beepSound();
-    		switch(color_state) 
-    		{
-            	case purple:
-                	color_state = pink;
-                	move_sprite(0, 16, 140);// Tile Number, Pos X + 8, Pos X + 16
-                	set_sprite_tile(1,0);
-                	set_sprite_tile(6,1);
-                	break;
-            	case blue:
-                	color_state = purple;
-                	move_sprite(0, 16, 60);
-                	set_sprite_tile(2,0);
-                	set_sprite_tile(1,1);
-                	break;
-            	case green:
-                	color_state = blue;
-                	move_sprite(0, 16, 76);
-                	set_sprite_tile(3,0);
-                	set_sprite_tile(2,1);
-                	break;
-            	case yellow:
-                	color_state = green;
-                	move_sprite(0, 16, 92);
-                	set_sprite_tile(4,0);
-                	set_sprite_tile(3,1);
-                	break;
-            	case red:
-                	color_state = yellow;
-                	move_sprite(0, 16, 108);
-                	set_sprite_tile(5,0);
-                	set_sprite_tile(4,1);
-                	break;
-            	case pink:
-                	color_state = red;
-                	move_sprite(0, 16, 124);
-                	set_sprite_tile(6,0);
-                	set_sprite_tile(5,1);
-                	break;
-        	}	
-    	}
+		if (!(joypad() == J_UP || joypad() == J_LEFT || joypad() == J_DOWN || joypad() == J_RIGHT))
+		{
+			timer = 0;
+			repeat_delay = 30;
+		}
+		else
+		{
+			timer++;
+		}
+		if (timer > repeat_delay)
+		{
+			timer = 0;
+			repeat_delay = 10;
+		}
+		if(timer == 1)
+		{
+			if(joypad() == J_UP || joypad() == J_LEFT) 
+			{
+				beepSound();
+				switch(color_state) 
+				{
+					case purple:
+						color_state = pink;
+						move_sprite(0, 16, 140);// Tile Number, Pos X + 8, Pos X + 16
+						set_sprite_tile(1,0);
+						set_sprite_tile(6,1);
+						break;
+					case blue:
+						color_state = purple;
+						move_sprite(0, 16, 60);
+						set_sprite_tile(2,0);
+						set_sprite_tile(1,1);
+						break;
+					case green:
+						color_state = blue;
+						move_sprite(0, 16, 76);
+						set_sprite_tile(3,0);
+						set_sprite_tile(2,1);
+						break;
+					case yellow:
+						color_state = green;
+						move_sprite(0, 16, 92);
+						set_sprite_tile(4,0);
+						set_sprite_tile(3,1);
+						break;
+					case red:
+						color_state = yellow;
+						move_sprite(0, 16, 108);
+						set_sprite_tile(5,0);
+						set_sprite_tile(4,1);
+						break;
+					case pink:
+						color_state = red;
+						move_sprite(0, 16, 124);
+						set_sprite_tile(6,0);
+						set_sprite_tile(5,1);
+						break;
+				}	
+			}
 
-    	if(joypad() == J_DOWN || joypad() == J_RIGHT) 
-    	{
-    		beepSound();
-    		switch(color_state) 
-    		{
-            	case purple:
-                	color_state = blue;
-                	move_sprite(0, 16, 76);
-                	set_sprite_tile(1,0);
-                	set_sprite_tile(2,1);
-                	break;
-            	case blue:
-                	color_state = green;
-                	move_sprite(0, 16, 92);
-                	set_sprite_tile(2,0);
-                	set_sprite_tile(3,1);
-                	break;
-            	case green:
-                	color_state = yellow;
-                	move_sprite(0, 16, 108);
-                	set_sprite_tile(3,0);
-                	set_sprite_tile(4,1);
-                	break;
-            	case yellow:
-                	color_state = red;
-                	move_sprite(0, 16, 124);
-                	set_sprite_tile(4,0);
-                	set_sprite_tile(5,1);
-                	break;
-            	case red:
-                	color_state = pink;
-                	move_sprite(0, 16, 140);
-                	set_sprite_tile(5,0);
-                	set_sprite_tile(6,1);
-                	break;
-            	case pink:
-                	color_state = purple;
-                	move_sprite(0, 16, 60);
-                	set_sprite_tile(6,0);
-                	set_sprite_tile(1,1);
-                	break;
-        	}	
-    	}
+			if(joypad() == J_DOWN || joypad() == J_RIGHT) 
+			{
+				beepSound();
+				switch(color_state) 
+				{
+					case purple:
+						color_state = blue;
+						move_sprite(0, 16, 76);
+						set_sprite_tile(1,0);
+						set_sprite_tile(2,1);
+						break;
+					case blue:
+						color_state = green;
+						move_sprite(0, 16, 92);
+						set_sprite_tile(2,0);
+						set_sprite_tile(3,1);
+						break;
+					case green:
+						color_state = yellow;
+						move_sprite(0, 16, 108);
+						set_sprite_tile(3,0);
+						set_sprite_tile(4,1);
+						break;
+					case yellow:
+						color_state = red;
+						move_sprite(0, 16, 124);
+						set_sprite_tile(4,0);
+						set_sprite_tile(5,1);
+						break;
+					case red:
+						color_state = pink;
+						move_sprite(0, 16, 140);
+						set_sprite_tile(5,0);
+						set_sprite_tile(6,1);
+						break;
+					case pink:
+						color_state = purple;
+						move_sprite(0, 16, 60);
+						set_sprite_tile(6,0);
+						set_sprite_tile(1,1);
+						break;
+				}	
+			}
 
-    	if(joypad() == J_A || joypad() == J_B) 
-    	{
-    		if(prev_color != color_state) 
-    		{
-    			pewSound();
-    			floodFill(0, 0, color_state, prev_color, board);
-    			colorizeBoard(board);
-    			prev_color = color_state;
-    			if(checkWinner(prev_color, board) != 0)
-    			{
-    				VBK_REG = 1;
-    				set_win_tiles(0,0,20,18,WINNER_MAP_ATTR); 
+			if(joypad() == J_A || joypad() == J_B) 
+			{
+				if(prev_color != color_state) 
+				{
+					pewSound();
+					floodFill(0, 0, color_state, prev_color, board);
+					colorizeBoard(board);
+					prev_color = color_state;
+					if(checkWinner(prev_color, board) != 0)
+					{
+						VBK_REG = 1;
+						set_win_tiles(0,0,20,18,WINNER_MAP_ATTR); 
 
-    				VBK_REG = 0; 
-    				set_win_tiles(0,0,20,18,WINNER_MAP);
+						VBK_REG = 0; 
+						set_win_tiles(0,0,20,18,WINNER_MAP);
 
-    				HIDE_SPRITES;
-    				SHOW_WIN;
+						HIDE_SPRITES;
+						SHOW_WIN;
 
-    				waitpad(J_START);
-    				
-    				HIDE_WIN;
-    				SHOW_SPRITES;	
-    				moves = 26;
-    				setMoves(moves);
-    				generateRandomBoard(board);
-    				prev_color = board[0][0];
-    				VBK_REG = 1;
-    				set_bkg_tiles(5, 3, 14, 14, board[0]);
-    				set_bkg_tiles(1, 4, 1, 1, board[0]); 
-    				set_bkg_tiles(2, 4, 1, 1, board[0]);
-    			}
-    			moves--;
-    			setMoves(moves); 
-    			if(moves == 0)
-    			{
-    				VBK_REG = 1;
-    				set_win_tiles(0,0,20,18,LOSER_MAP_ATTR); 
+						waitpad(J_START);
+						
+						HIDE_WIN;
+						SHOW_SPRITES;	
+						moves = 26;
+						setMoves(moves);
+						generateRandomBoard(board);
+						prev_color = board[0][0];
+						VBK_REG = 1;
+						set_bkg_tiles(5, 3, 14, 14, board[0]);
+						set_bkg_tiles(1, 4, 1, 1, board[0]); 
+						set_bkg_tiles(2, 4, 1, 1, board[0]);
+					}
+					moves--;
+					setMoves(moves); 
+					if(moves == 0)
+					{
+						VBK_REG = 1;
+						set_win_tiles(0,0,20,18,LOSER_MAP_ATTR); 
 
-    				VBK_REG = 0; 
-    				set_win_tiles(0,0,20,18,LOSER_MAP);
+						VBK_REG = 0; 
+						set_win_tiles(0,0,20,18,LOSER_MAP);
 
-    				HIDE_SPRITES;
-    				SHOW_WIN;
+						HIDE_SPRITES;
+						SHOW_WIN;
 
-    				waitpad(J_START);
-    				
-    				HIDE_WIN;
-    				SHOW_SPRITES;	
-    				moves = 25;
-    				setMoves(moves);
-    				generateRandomBoard(board);
-    				prev_color = board[0][0];
-    				VBK_REG = 1;
-    				set_bkg_tiles(5, 3, 14, 14, board[0]);
-    				set_bkg_tiles(1, 4, 1, 1, board[0]); 
-    				set_bkg_tiles(2, 4, 1, 1, board[0]);
-    			}
-    		}
-    	}
-
-    	delay(115);
-    }
+						waitpad(J_START);
+						
+						HIDE_WIN;
+						SHOW_SPRITES;	
+						moves = 25;
+						setMoves(moves);
+						generateRandomBoard(board);
+						prev_color = board[0][0];
+						VBK_REG = 1;
+						set_bkg_tiles(5, 3, 14, 14, board[0]);
+						set_bkg_tiles(1, 4, 1, 1, board[0]); 
+						set_bkg_tiles(2, 4, 1, 1, board[0]);
+					}
+				}
+			}
+		}
+		delay(16);
+	}
 }
 
 void generateRandomBoard(UINT8 board[14][14]) 
