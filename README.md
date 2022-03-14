@@ -16,13 +16,17 @@ Open the terminal and navigate to the src folder, then run the following command
 lcc -Wm-yC -o flooder.gb main.c
 ```
 
+or just run the 
+
 ## Thank you
 
 I wanted to thank all the community for their support. 
 
-Niels of Ferrante Crafts who help me release the physical version and design the box and manual of the game.
+Niels of Ferrante Crafts who helped me release the physical version and design the box and manual of the game.
 
-[joseJX](https://github.com/JoseJX) who help me with the pocket version support.
+[joseJX](https://github.com/JoseJX) who helped me with the pocket version support.
+
+[SuperSamio](https://github.com/SuperSamio) and [bbbbbr](https://github.com/bbbbbr) who helped me with the input selector
 
 ## Disclaimer
 I'm not affiliated with Nintendo in any way.
