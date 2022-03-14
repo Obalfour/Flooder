@@ -3,6 +3,8 @@ __asm \
   halt \
 __endasm
 
+#define BUTTON_TICKED(MASK)   ((joypad_current & (MASK)) && !(joypad_last & (MASK)))
+
 #define WHITE_CGB 32767
 #define LIGHT_GRAY_CGB 21140
 #define DARK_GRAY_CGB 12684
